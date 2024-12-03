@@ -13,6 +13,7 @@ function App() {
 
   const handlerFormSubmit = (e) => {
     e.preventDefault();
+    const newPosts = [...posts, addName];
   };
 
   return (
@@ -35,6 +36,11 @@ function App() {
               <button className="btn btn-primary">Cerca</button>
             </form>
             <ul className="title-post-searched"></ul>
+            {posts.map((post) => (
+              <li key={post}>
+                {post} <button className="btn btn-danger"></button>
+              </li>
+            ))}
           </div>
         </section>
       </main>
