@@ -14,6 +14,13 @@ function App() {
   const handlerFormSubmit = (e) => {
     e.preventDefault();
     const newPosts = [...posts, addName];
+    setPosts(newPosts);
+    setAddName("");
+  };
+  const handlerDeletePost = (postToDelete) => {
+    const updatedPosts = posts.filter((post) => post !== postToDelete);
+
+    setPosts(updatedPosts);
   };
 
   return (
@@ -38,7 +45,11 @@ function App() {
             <ul className="title-post-searched"></ul>
             {posts.map((post) => (
               <li key={post}>
-                {post} <button className="btn btn-danger"></button>
+                {post}{" "}
+                <i
+                  className="fa-solid fa-trash-can fa-sm delete"
+                  onClick={() => handlerDeletePost(post)}
+                ></i>
               </li>
             ))}
           </div>
