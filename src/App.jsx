@@ -1,11 +1,19 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import posts from "./data/posts";
-import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [addName, setAddName] = useState("");
+
+  const [posts, setPosts] = useState(["html", "css"]);
+
+  const handleInputChange = (e) => {
+    setAddName(e.target.value);
+    //console.log(e);
+  };
+
+  const handlerFormSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <>
@@ -17,8 +25,13 @@ function App() {
       <main>
         <section className="posts">
           <div className="container">
-            <form>
-              <input type="text" className="my-4 form-control" />
+            <form onSubmit={handlerFormSubmit}>
+              <input
+                type="text"
+                className="my-4 form-control"
+                value={addName}
+                onChange={handleInputChange}
+              />
               <button className="btn btn-primary">Cerca</button>
             </form>
             <ul className="title-post-searched"></ul>
